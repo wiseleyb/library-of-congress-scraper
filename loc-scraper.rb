@@ -33,6 +33,16 @@ class ScrapeLOC
 
     @counter = 0
 
+    # You need to modify base user if you want more images per page
+    @page_size = 25
+
+    @start_page = 65
+    if @start_page.to_i > 0
+      @base_url = "https://www.loc.gov/collections/" \
+                  "japanese-fine-prints-pre-1915/?sp=#{@start_page}"
+      @counter = @start_page * @page_size
+    end
+
     FileUtils::mkdir_p @output_path
     FileUtils::mkdir_p @cache_dir if @cache
   end
@@ -86,13 +96,15 @@ class ScrapeLOC
       next if !Dir.glob("#{@output_path}/#{counter_str}*.*")
 
       puts '*' * 40
-      puts @counter
+      puts "#{@counter} page: #{@counter/@page_size}"
+
       title = parsed_detail_page.css('.item-title').css('cite').text
       puts title
       options = parsed_detail_page.css('.select-default').css('option')
       opts = options.select do |o|
         o.text.include?(@img_type)
       end
+      next if opts.empty?
       img_url = (@img_size == 'large' ? opts.last : opts.first).attribute('value').to_s
       puts img_url
       fname = "#{@output_path}/#{to_filename(title, img_url, @counter)}"
