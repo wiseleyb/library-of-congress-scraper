@@ -17,3 +17,5 @@ Take a look at at `initialize` in `loc-scraper.rb` for config options. This isn'
 I've only tested this on [https://www.loc.gov/collections/japanese-fine-prints-pre-1915/](https://www.loc.gov/collections/japanese-fine-prints-pre-1915/) but, in theory it should work on other content, on filters on that page, etc.
 
 Ping me with questions or PR requests.
+
+Here's the JPG-Large set if you want to save time downloading... 400MB, 2600+ photos. [https://www.idrive.com/idrive/sh/sh?k=i6a3s8p0h5](https://www.idrive.com/idrive/sh/sh?k=i6a3s8p0h5)
