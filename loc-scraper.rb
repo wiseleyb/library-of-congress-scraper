@@ -36,7 +36,7 @@ class ScrapeLOC
     # You need to modify base user if you want more images per page
     @page_size = 25
 
-    @start_page = 65
+    @start_page = 0
     if @start_page.to_i > 0
       @base_url = "https://www.loc.gov/collections/" \
                   "japanese-fine-prints-pre-1915/?sp=#{@start_page}"

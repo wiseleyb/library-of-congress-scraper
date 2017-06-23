@@ -24,7 +24,8 @@ module Helpers
   def to_filename(title, url, count)
     format = url.split('.').last
     fname = sanitize_filename(title)
-    res = "#{count.to_s.rjust(5, '0')}_#{fname}.#{format}"
+    base = "#{count.to_s.rjust(5, '0')}_#{fname}"[0..30]
+    res = "#{base}.#{format}"
     res.gsub('__','_').gsub('_.', '.')
   end
 
